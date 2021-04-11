@@ -47,7 +47,7 @@ module.exports = grammar({
 
         seq_rule: $ => repeat1($._atom_rule),
 
-        ident: $ => /[a-zA-Z]+/,
+        ident: $ => /[a-zA-Z_]+/,
 
         token_ident: $ => seq(
             '\'',
