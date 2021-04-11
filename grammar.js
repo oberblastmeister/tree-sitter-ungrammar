@@ -1,45 +1,45 @@
 module.exports = grammar({
     name: 'ungrammar',
 
+    conflicts: $ => [
+        [$._rule],
+        [$._atom_rule],
+    ],
+
     extras: $ => [/\s/, $.comment],
 
     rules: {
-        grammar: $ => repeat($.node),
+        grammar: $ => repeat1($.node),
 
-        node: $ => prec(4, seq(
-            field('name', $.ident),
-            '=',
-            field('rule', $._compound_rule),
-        )),
+        node: $ => seq($.ident, '=', $._rule),
 
-        _compound_rule: $ => choice(
-            $.or_rule,
-            $.and_rule,
-            $._single_rule,
-            $.parenthesized,
+        _atom_rule: $ => choice(
+            seq($.ident, optional($.modifier)),
+            seq($.token_ident, optional($.modifier)),
+            seq('(', $._rule, ')', optional($.modifier)),
+            seq($.label, optional($.modifier)),
         ),
 
-        parenthesized: $ => seq('(', $._compound_rule, ')'),
+        label: $ => seq($.ident, ':', $._atom_rule),
 
-        _single_rule: $ => $.rule,
+        modifier: $ => choice('?', '*'),
 
-        or_rule: $ => prec.left(3, seq($._compound_rule, '|', $._compound_rule)),
-
-        and_rule: $ => prec.left(2, seq($._compound_rule, $._compound_rule)),
-
-        rule: $ => choice(
-            $.ident,
-            $.token_ident,
-            seq($.rule, '?'),
-            seq($.rule, '*'),
-            seq(field('label', $.ident), ':')
+        _rule: $ => choice(
+            repeat1($._atom_rule),
+            seq(
+                $._atom_rule,
+                '|',
+                repeat1($._atom_rule),
+            ),
         ),
+
+        _repeated_rule: $ => repeat1($._rule),
 
         ident: $ => /[a-zA-Z]+/,
 
         token_ident: $ => seq(
             '\'',
-            repeat(/[^']/),
+            repeat(/[^\']/),
             token.immediate('\''),
         ),
 

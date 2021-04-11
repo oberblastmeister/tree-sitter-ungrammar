@@ -2,45 +2,16 @@
 Compositions
 ==================
 
-Literal =
-  'str'
-  | 'number'
-  | 'true'
-  | 'false'
+Name = 'ident'
 
-Name =
-  'ident'
+IfStmt =
+  Expr
+  Body
+  'hello'
+  Another
 
-NameRef =
-  'ident'
-
-Assignment =
-  Name
-  '='
-  Literal
+Boolean =
+  'true'
+  'false'
 
 -------------
-
-(grammar
-  (node
-    (ident)
-    (or_rule
-      (or_rule
-        (or_rule
-          (rule (token_ident))
-        (rule (token_ident)))
-      (rule (token_ident)))
-    (rule (token_ident))))
-  (node
-    (ident)
-    (rule (token_ident)))
-  (node
-    (ident)
-    (rule (token_ident)))
-  (node
-    (ident)
-    (and_rule
-      (and_rule
-        (rule (ident))
-      (rule (token_ident)))
-    (rule (ident)))))

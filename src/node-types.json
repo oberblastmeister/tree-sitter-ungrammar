@@ -1,38 +1,11 @@
 [
   {
-    "type": "and_rule",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "and_rule",
-          "named": true
-        },
-        {
-          "type": "or_rule",
-          "named": true
-        },
-        {
-          "type": "parenthesized",
-          "named": true
-        },
-        {
-          "type": "rule",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "grammar",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "node",
@@ -42,45 +15,7 @@
     }
   },
   {
-    "type": "node",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      },
-      "rule": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "and_rule",
-            "named": true
-          },
-          {
-            "type": "or_rule",
-            "named": true
-          },
-          {
-            "type": "parenthesized",
-            "named": true
-          },
-          {
-            "type": "rule",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "or_rule",
+    "type": "label",
     "named": true,
     "fields": {},
     "children": {
@@ -88,76 +23,47 @@
       "required": true,
       "types": [
         {
-          "type": "and_rule",
+          "type": "ident",
           "named": true
         },
         {
-          "type": "or_rule",
+          "type": "label",
           "named": true
         },
         {
-          "type": "parenthesized",
+          "type": "modifier",
           "named": true
         },
         {
-          "type": "rule",
+          "type": "token_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "parenthesized",
+    "type": "modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "node",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
-      "types": [
-        {
-          "type": "and_rule",
-          "named": true
-        },
-        {
-          "type": "or_rule",
-          "named": true
-        },
-        {
-          "type": "parenthesized",
-          "named": true
-        },
-        {
-          "type": "rule",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "rule",
-    "named": true,
-    "fields": {
-      "label": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
       "types": [
         {
           "type": "ident",
           "named": true
         },
         {
-          "type": "rule",
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "modifier",
           "named": true
         },
         {
