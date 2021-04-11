@@ -2,7 +2,6 @@ module.exports = grammar({
     name: 'ungrammar',
 
     conflicts: $ => [
-        [$._rule],
         [$._atom_rule],
         [$.alt_rule],
         [$.seq_rule],

@@ -219,9 +219,6 @@
   ],
   "conflicts": [
     [
-      "_rule"
-    ],
-    [
       "_atom_rule"
     ],
     [
