@@ -37,7 +37,11 @@ module.exports = grammar({
 
         ident: $ => /[a-zA-Z]+/,
 
-        token_ident: $ => /'.*?'/,
+        token_ident: $ => seq(
+            '\'',
+            repeat(/[^']/),
+            token.immediate('\''),
+        ),
 
         comment: $ => token(seq('//', /.*/)),
     },

@@ -168,6 +168,15 @@
     }
   },
   {
+    "type": "token_ident",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -197,10 +206,6 @@
   },
   {
     "type": "ident",
-    "named": true
-  },
-  {
-    "type": "token_ident",
     "named": true
   },
   {
