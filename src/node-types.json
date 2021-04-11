@@ -30,6 +30,52 @@
     }
   },
   {
+    "type": "labeled",
+    "named": true,
+    "fields": {
+      "label": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "alt_rule",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "labeled",
+          "named": true
+        },
+        {
+          "type": "modifier",
+          "named": true
+        },
+        {
+          "type": "seq_rule",
+          "named": true
+        },
+        {
+          "type": "token_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "modifier",
     "named": true,
     "fields": {}
@@ -67,18 +113,7 @@
   {
     "type": "seq_rule",
     "named": true,
-    "fields": {
-      "label": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": true,
@@ -89,6 +124,10 @@
         },
         {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "labeled",
           "named": true
         },
         {

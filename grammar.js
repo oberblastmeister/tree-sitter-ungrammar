@@ -19,23 +19,18 @@ module.exports = grammar({
             field('rule', $._rule),
         ),
 
-        // _atom_rule: $ => choice(
-        //     seq($.ident, optional($.modifier)),
-        //     seq($.token_ident, optional($.modifier)),
-        //     seq('(', $._rule, ')', optional($.modifier)),
-        //     seq(field('label', $.ident), ':', $._atom_rule, optional($.modifier))
-        // ),
         _atom_rule: $ => seq(choice(
             $.ident,
             $.token_ident,
             seq('(', $._rule, ')'),
-            seq(field('label', $.ident), ':', $._atom_rule)
+            $.labeled,
         ), optional($.modifier)),
+
+        labeled: $ => seq(field('label', $.ident), ':', $._atom_rule),
 
         modifier: $ => choice('?', '*'),
 
         _rule: $ => choice(
-            // prec($.seq_rule),
             $.seq_rule,
             $.alt_rule,
         ),

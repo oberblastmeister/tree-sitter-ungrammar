@@ -65,25 +65,8 @@
               ]
             },
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "label",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "ident"
-                  }
-                },
-                {
-                  "type": "STRING",
-                  "value": ":"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_atom_rule"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "labeled"
             }
           ]
         },
@@ -98,6 +81,27 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "labeled": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "label",
+          "content": {
+            "type": "SYMBOL",
+            "name": "ident"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_atom_rule"
         }
       ]
     },
@@ -161,7 +165,7 @@
     },
     "ident": {
       "type": "PATTERN",
-      "value": "[a-zA-Z]+"
+      "value": "[a-zA-Z_]+"
     },
     "token_ident": {
       "type": "SEQ",
