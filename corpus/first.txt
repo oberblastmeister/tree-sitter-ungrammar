@@ -1,0 +1,13 @@
+==================
+Simple
+==================
+
+Name =
+  'ident'
+
+NameRef =
+  'ident'
+
+-------------
+
+(grammar (node (ident) (rule (token_ident))) (node (ident) (rule (token_ident))))
