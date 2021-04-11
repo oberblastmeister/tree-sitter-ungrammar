@@ -15,8 +15,13 @@ module.exports = grammar({
         _compound_rule: $ => choice(
             $.or_rule,
             $.and_rule,
-            $.rule,
+            $._single_rule,
+            $.parenthesized,
         ),
+
+        parenthesized: $ => seq('(', $._compound_rule, ')'),
+
+        _single_rule: $ => $.rule,
 
         or_rule: $ => prec.left(3, seq($._compound_rule, '|', $._compound_rule)),
 
@@ -27,7 +32,6 @@ module.exports = grammar({
             $.token_ident,
             seq($.rule, '?'),
             seq($.rule, '*'),
-            seq('(', $.rule, ')'),
             seq(field('label', $.ident), ':')
         ),
 

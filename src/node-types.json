@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "parenthesized",
+          "named": true
+        },
+        {
           "type": "rule",
           "named": true
         }
@@ -64,6 +68,10 @@
             "named": true
           },
           {
+            "type": "parenthesized",
+            "named": true
+          },
+          {
             "type": "rule",
             "named": true
           }
@@ -85,6 +93,37 @@
         },
         {
           "type": "or_rule",
+          "named": true
+        },
+        {
+          "type": "parenthesized",
+          "named": true
+        },
+        {
+          "type": "rule",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parenthesized",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "and_rule",
+          "named": true
+        },
+        {
+          "type": "or_rule",
+          "named": true
+        },
+        {
+          "type": "parenthesized",
           "named": true
         },
         {

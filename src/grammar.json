@@ -50,9 +50,34 @@
         },
         {
           "type": "SYMBOL",
-          "name": "rule"
+          "name": "_single_rule"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized"
         }
       ]
+    },
+    "parenthesized": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_compound_rule"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_single_rule": {
+      "type": "SYMBOL",
+      "name": "rule"
     },
     "or_rule": {
       "type": "PREC_LEFT",
@@ -126,23 +151,6 @@
             {
               "type": "STRING",
               "value": "*"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "("
-            },
-            {
-              "type": "SYMBOL",
-              "name": "rule"
-            },
-            {
-              "type": "STRING",
-              "value": ")"
             }
           ]
         },
