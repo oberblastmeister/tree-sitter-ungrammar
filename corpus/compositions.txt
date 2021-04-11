@@ -12,6 +12,11 @@ IfStmt =
 
 Boolean =
   'true'
-  'false'
+  | 'false'
+
+Places =
+  'first'
+  | 'second'
+  | Places Places
 
 -------------

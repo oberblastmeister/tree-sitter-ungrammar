@@ -1,5 +1,20 @@
 [
   {
+    "type": "alt_rule",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "seq_rule",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "grammar",
     "named": true,
     "fields": {},
@@ -15,33 +30,6 @@
     }
   },
   {
-    "type": "label",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "modifier",
-          "named": true
-        },
-        {
-          "type": "token_ident",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "modifier",
     "named": true,
     "fields": {}
@@ -49,21 +37,66 @@
   {
     "type": "node",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      },
+      "rule": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "alt_rule",
+            "named": true
+          },
+          {
+            "type": "seq_rule",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "seq_rule",
+    "named": true,
+    "fields": {
+      "label": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "alt_rule",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
         {
-          "type": "label",
+          "type": "modifier",
           "named": true
         },
         {
-          "type": "modifier",
+          "type": "seq_rule",
           "named": true
         },
         {

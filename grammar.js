@@ -4,6 +4,8 @@ module.exports = grammar({
     conflicts: $ => [
         [$._rule],
         [$._atom_rule],
+        [$.alt_rule],
+        [$.seq_rule],
     ],
 
     extras: $ => [/\s/, $.comment],
@@ -11,29 +13,39 @@ module.exports = grammar({
     rules: {
         grammar: $ => repeat1($.node),
 
-        node: $ => seq($.ident, '=', $._rule),
-
-        _atom_rule: $ => choice(
-            seq($.ident, optional($.modifier)),
-            seq($.token_ident, optional($.modifier)),
-            seq('(', $._rule, ')', optional($.modifier)),
-            seq($.label, optional($.modifier)),
+        node: $ => seq(
+            field('name', $.ident),
+            '=',
+            field('rule', $._rule),
         ),
 
-        label: $ => seq($.ident, ':', $._atom_rule),
+        // _atom_rule: $ => choice(
+        //     seq($.ident, optional($.modifier)),
+        //     seq($.token_ident, optional($.modifier)),
+        //     seq('(', $._rule, ')', optional($.modifier)),
+        //     seq(field('label', $.ident), ':', $._atom_rule, optional($.modifier))
+        // ),
+        _atom_rule: $ => seq(choice(
+            $.ident,
+            $.token_ident,
+            seq('(', $._rule, ')'),
+            seq(field('label', $.ident), ':', $._atom_rule)
+        ), optional($.modifier)),
 
         modifier: $ => choice('?', '*'),
 
         _rule: $ => choice(
-            repeat1($._atom_rule),
-            seq(
-                $._atom_rule,
-                '|',
-                repeat1($._atom_rule),
-            ),
+            // prec($.seq_rule),
+            $.seq_rule,
+            $.alt_rule,
         ),
 
-        _repeated_rule: $ => repeat1($._rule),
+        alt_rule: $ => seq(
+            $.seq_rule,
+            repeat1(seq('|', $.seq_rule))
+        ),
+
+        seq_rule: $ => repeat1($._atom_rule),
 
         ident: $ => /[a-zA-Z]+/,
 
