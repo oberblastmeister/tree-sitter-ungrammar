@@ -230,11 +230,11 @@
     },
     {
       "type": "SYMBOL",
-      "name": "comment"
+      "name": "doc_comment"
     },
     {
       "type": "SYMBOL",
-      "name": "doc_comment"
+      "name": "comment"
     }
   ],
   "conflicts": [

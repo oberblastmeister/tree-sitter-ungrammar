@@ -7,7 +7,7 @@ module.exports = grammar({
         [$.seq_rule],
     ],
 
-    extras: $ => [/\s/, $.comment, $.doc_comment],
+    extras: $ => [/\s/, $.doc_comment, $.comment],
 
     rules: {
         grammar: $ => repeat1($.node),
