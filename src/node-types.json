@@ -183,6 +183,10 @@
     "named": true
   },
   {
+    "type": "doc_comment",
+    "named": true
+  },
+  {
     "type": "ident",
     "named": true
   },

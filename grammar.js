@@ -7,7 +7,7 @@ module.exports = grammar({
         [$.seq_rule],
     ],
 
-    extras: $ => [/\s/, $.comment],
+    extras: $ => [/\s/, $.comment, $.doc_comment],
 
     rules: {
         grammar: $ => repeat1($.node),
@@ -50,5 +50,7 @@ module.exports = grammar({
         ),
 
         comment: $ => token(seq('//', /.*/)),
+
+        doc_comment: $ => token(seq('///', /.*/)),
     },
 });
